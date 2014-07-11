@@ -8,8 +8,12 @@ from type4.forms import ChangesForm
 import logging
 logger = logging.getLogger(__name__)
 
+def fix_splits(name):
+	first, sep, second = name.partition(' // ')
+	return first + second
+
 def extract_names(cards):
-	return '|'.join(sorted(c.name for c in cards)) #change to sorted?
+	return '|'.join(sorted(fix_splits(c.name) for c in cards)) #change to sorted?
 
 def index(request):
     all_cards = CardWrapper.get_cards()
