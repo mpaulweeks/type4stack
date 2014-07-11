@@ -17,13 +17,15 @@ class Card(models.Model):
 	is_creature = models.BooleanField('permanent: creature', default=False)
 	is_artifact = models.BooleanField('permanent: artifact', default=False)
 	is_enchantment = models.BooleanField('permanent: enchantment', default=False)
+	is_land = models.BooleanField('permanent: land', default=False)
 	is_counterspell = models.BooleanField('counters spells', default=False)
 	is_masticore = models.BooleanField('masticore', default=False)
-	is_draw = models.BooleanField('draws more than one card', default=False)
+	is_draw = models.BooleanField('generates +2 card advantage', default=False)
 	is_removal_creature = models.BooleanField('kills: creatures', default=False)
 	is_removal_artifact = models.BooleanField('kills: artifacts', default=False)
 	is_removal_enchantment = models.BooleanField('kills: enchantments', default=False)
 	is_removal_land = models.BooleanField('kills: land', default=False)	
+	is_confiscate = models.BooleanField('takes cards belonging to other people', default=False)	
     
     # for use only by admin site
 	def current_status(self):
