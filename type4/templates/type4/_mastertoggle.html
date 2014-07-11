@@ -1,0 +1,13 @@
+<!-- partial -->
+
+<button id="mastertoggle">Toggle all toggles</button>
+<br />
+
+<script type="text/javascript">		
+		$(document).on("ready", function(){		
+			$('#mastertoggle').on('click', function (){
+				console.log('fuck');
+				$('.toggle').trigger('click');
+			});
+		});		
+</script>

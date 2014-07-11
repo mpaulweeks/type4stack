@@ -1,0 +1,1 @@
+web: gunicorn type4stack.wsgi --log-file -

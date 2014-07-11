@@ -1,0 +1,45 @@
+{% extends "type4/base.html" %}
+
+{% block intro %}
+
+<h1>Add cards</h1>
+
+{% endblock %}
+
+{% block content %}
+	
+<form action="{% url 'type4:admin_update' %}" method="post">
+<div class="row">
+  <div class="col-xs-6">
+	{% csrf_token %}
+	<label>Inclusion status:</label>
+	<select name="status">
+		{% for status_choice in status_set %}
+		<option value="{{ status_choice.id }}">{{ status_choice.name }}</option>
+		{% endfor %}
+	</select>
+	
+	{% for flag in flag_set %}
+	<br/>
+	<label>{{flag}}</label>
+	<select name="{{flag}}">
+		<option value="None">-</option>
+		<option value="True">True</option>
+		<option value="False">False</option>
+	</select>
+	{% endfor %}
+	
+	<br />
+	<input type="submit" value="Submit" />
+  
+  </div>
+  <div class="col-xs-6">
+	
+	<div>Paste card names here</div>
+	<textarea style="width: 100%; height: 400px;" name="card_names"></textarea>
+  
+  </div>
+</div>
+</form>
+
+{% endblock %}

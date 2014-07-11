@@ -1,0 +1,24 @@
+{% extends "type4/base.html" %}
+
+{% block subtitle %}
+	 - Changes
+{% endblock %}
+
+{% block intro %}
+
+<h1> View changes </h1>
+
+<form action="{% url 'type4:changes' %}" method="GET">
+	{{ form.as_p }}
+	<input type="submit" value="Refresh" />
+</form>
+
+{% endblock %}
+
+{% block content %}
+
+{% include "type4/_cardlist.html" with title='Added' card_names=added_names card_count=added_count %}
+
+{% include "type4/_cardlist.html" with title='Removed' card_names=removed_names card_count=removed_count %}
+	
+{% endblock %}

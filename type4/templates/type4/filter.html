@@ -1,0 +1,28 @@
+{% extends "type4/all_cards.html" %}
+
+{% block subtitle %}
+	 - Filter
+{% endblock %}
+
+{% block intro %}
+
+<h1> Filter by Category </h1>
+
+<form action="{% url 'type4:filter' %}" method="get">
+	
+	{% for flag in flag_set %}
+	<br/>
+	<label>{{flag}}</label>
+	<select name="{{flag}}">
+		<option value="None">-</option>
+		<option value="True">True</option>
+		<option value="False">False</option>
+	</select>
+	{% endfor %}
+	
+	<br />
+	<input type="submit" value="Submit" />
+	
+</form>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "type4/base.html" %}
+
+{% block subtitle %}
+	 - Full List
+{% endblock %}
+
+{% block intro %}
+
+<h4> Listed here is every card that's ever been included/rejected/considered </h4>
+
+{% endblock %}
+
+{% block content %}
+
+{% include "type4/_mastertoggle.html" %}
+
+{% include "type4/_cardlist.html" with title='Current list' card_names=in_names card_count=in_count %}
+
+{% include "type4/_cardlist.html" with title='Cards I want to add' card_names=want_names card_count=want_count %}
+
+{% include "type4/_cardlist.html" with title='Cards that have been cut' card_names=removed_names card_count=removed_count %}
+
+{% include "type4/_cardlist.html" with title='Cards that would never work' card_names=rejected_names card_count=rejected_count %}
+
+{% endblock %}

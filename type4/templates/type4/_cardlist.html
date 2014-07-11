@@ -1,0 +1,16 @@
+<!-- partial -->
+
+<h3 class="cardlist-title"> {{ title }} </h3>
+
+{% if card_names %}
+	<div class="cardlist" data-art="{{ show_art }}">
+		<div class="data">
+		{{ card_names }}
+		</div>
+		<button class="toggle">Toggle image view</button>
+		<span> {{ card_count }} cards </span>
+		<br /><br />
+	</div>
+{% else %}
+	<div> No cards found :( </div>
+{% endif %}

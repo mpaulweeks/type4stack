@@ -1,0 +1,34 @@
+body {
+	background-color: #C1CCC0;
+	background-image: url('images/marble.jpg');
+	color: white;
+}
+textarea {
+	color: black;
+}
+a {
+	color: white;
+}
+button {
+	color: black;
+}
+input {
+	color: black;
+}
+.cardlist .data {
+	display: none;
+}
+.cardlistdisplay {
+	padding: 10px;
+	border: 4px double white;
+}
+.cardimage {
+	width: 250px;
+}
+.columned {
+	-moz-column-width: 250px;
+	-webkit-column-width: 250px;
+}
+.cardlist-title {
+	text-decoration: underline;
+}
