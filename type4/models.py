@@ -26,7 +26,7 @@ class Card(models.Model):
 	is_removal_enchantment = models.BooleanField('kills: enchantments', default=False)
 	is_removal_land = models.BooleanField('kills: land', default=False)	
 	is_confiscate = models.BooleanField('takes cards belonging to other people', default=False)	
-    
+	
     # for use only by admin site
 	def current_status(self):
 		recent_statuses = Status.objects.filter(
