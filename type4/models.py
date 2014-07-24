@@ -29,6 +29,7 @@ class Card(models.Model):
 	is_morph = models.BooleanField('morphs', default=False)
 	is_recurring = models.BooleanField('has buyback or some other recurring effect', default=False)
 	is_cycling = models.BooleanField('has cycling', default=False)
+	is_reanimate = models.BooleanField('reanimates', default=False)
 	
     # for use only by admin site
 	def current_status(self):
