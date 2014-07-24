@@ -76,16 +76,13 @@
 </div>
 </form></div>
 
-<style>
-card-image {
-
-}
-</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script>
 jQuery(document).ready(function(){
 	var name = $("#id_name");
-	var html = '<br/><img class="card-image" src="http://mtgimage.com/card/' + name.val() + '.jpg" />';
+	var html = '<br/><img '
+	+ 'style="position: absolute;top: 180px;left: 400px;" '
+	+ 'src="http://mtgimage.com/card/' + name.val() + '.jpg" />';
 	name.parent().append(html);
 });
 </script>
