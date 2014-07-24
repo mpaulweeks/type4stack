@@ -20,12 +20,15 @@ class Card(models.Model):
 	is_land = models.BooleanField('permanent: land', default=False)
 	is_counterspell = models.BooleanField('counters spells', default=False)
 	is_masticore = models.BooleanField('masticore', default=False)
-	is_draw = models.BooleanField('generates +2 card advantage', default=False)
+	is_draw = models.BooleanField('generates 2+ card advantage', default=False)
 	is_removal_creature = models.BooleanField('kills: creatures', default=False)
 	is_removal_artifact = models.BooleanField('kills: artifacts', default=False)
 	is_removal_enchantment = models.BooleanField('kills: enchantments', default=False)
 	is_removal_land = models.BooleanField('kills: land', default=False)	
 	is_confiscate = models.BooleanField('takes cards belonging to other people', default=False)	
+	is_morph = models.BooleanField('morphs', default=False)
+	is_recurring = models.BooleanField('has buyback or some other recurring effect', default=False)
+	is_cycling = models.BooleanField('has cycling', default=False)
 	
     # for use only by admin site
 	def current_status(self):
