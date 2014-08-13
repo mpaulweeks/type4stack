@@ -20,11 +20,11 @@ function init_cardlist() {
 				+ getImage(cardname)
 				+ '</a>';
 		} else {		
-			return '<li><a href="'
+			return '<div><a href="'
 				+ getCardUrl(cardname)
 				+ '" class="mtgcard" target="_blank">'
 				+ cardname
-				+ '</a></li>';
+				+ '</a></div>';
 		}
 	}
 
