@@ -70,7 +70,6 @@ def filter(request):
 def stats(request):
 	flag_set = Card.flags()
 	wrappers = CardWrapper.get_cards_in_stack()
-	flag_count = {}
 	categories = []
 	totalCount = CategoryCount()
 	totalCount.name = "Total"
