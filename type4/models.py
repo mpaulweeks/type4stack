@@ -30,6 +30,9 @@ class Card(models.Model):
 	is_recurring = models.BooleanField('has buyback or some other recurring effect', default=False)
 	is_cycling = models.BooleanField('has cycling', default=False)
 	is_reanimate = models.BooleanField('reanimates', default=False)
+	is_flash_enabler = models.BooleanField('gives other cards flash', default=False)
+	is_hard_to_kill = models.BooleanField('is hard to kill', default=False)
+	is_stack_specific = models.BooleanField('works best when played Stack format', default=False)
 	
     # for use only by admin site
 	def current_status(self):
