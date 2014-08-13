@@ -1,4 +1,4 @@
-{% extends "type4/base.html" %}
+{% extends "type4/all_cards.html" %}
 
 {% block subtitle %}
 	 - Stats
@@ -6,9 +6,7 @@
 
 {% block intro %}
 	<h1> Stats for Current Stack </h1>
-{% endblock %}
-
-{% block content %}
+	
 	{% for category in category_set %}
 	<div>
 		<span>
@@ -23,6 +21,7 @@
 				<th> Count </th>
 				<th> Percent </th>
 				<th> Category </th>
+				<th>  </th>
 			</tr>
 		</thead>
 		<tbody>
@@ -31,6 +30,7 @@
 				<td> {{ category.count }} </td>
 				<td> {{ category.percent }} </td>
 				<td> {{ category.name }} </td>
+				<td><a href="{% url 'type4:stats' %}?{{category.attr}}=True">Filter</a></td>
 			</tr>
 			{% endfor %}
 		</tbody>

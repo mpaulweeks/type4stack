@@ -1,9 +1,10 @@
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.core.urlresolvers import reverse
 from django.shortcuts import render
-from type4.models import Card, Status, CategoryCount
+from type4.models import Card, Status, CategoryCount, FilterChoice
 from type4.classes import CardWrapper
 from type4.forms import ChangesForm
+from sets import Set
 
 import logging
 logger = logging.getLogger(__name__)
@@ -50,45 +51,53 @@ def all_cards(request):
 	context = __all_cards_context(wrappers)
 	return render(request, 'type4/all_cards.html', context)  
 
-def filter(request):
+def __filter_context(request):
 	flag_set = Card.flags()
 	filter_dict = {}
+	any_filter = 'false'
 	for f in flag_set:
 		if f in request.GET:
 			s = request.GET[f]
 			if s == 'True':
 				filter_dict[f] = True
+				any_filter = 'true'
 			if s == 'False':
 				filter_dict[f] = False
 	cards = Card.objects.filter(**filter_dict)
 	ids = list(c.id for c in cards)
 	wrappers = CardWrapper.get_cards_by_id(ids)
 	context = __all_cards_context(wrappers)
-	context['flag_set'] = flag_set
+	context['show_art'] = any_filter
+	return context
+
+def filter(request):
+	context = __filter_context(request)
+	context['filter_choices'] = FilterChoice.get()
 	return render(request, 'type4/filter.html', context)
 
 def stats(request):
-	flag_set = Card.flags()
+	flag_set = FilterChoice.get()
 	wrappers = CardWrapper.get_cards_in_stack()
 	categories = []
-	totalCount = CategoryCount()
-	totalCount.name = "Total"
-	totalCount.count = len(wrappers)
-	categories.append(totalCount)
 	for f in flag_set:
 		count = 0
 		for w in wrappers:
-			if getattr(w.card, f):
+			if getattr(w.card, f.attr):
 				count += 1
 		c = CategoryCount()
-		c.name = f
+		c.name = f.name
+		c.attr = f.attr
 		c.count = count
 		categories.append(c)
+	categories = sorted(categories, key=lambda c: c.name)
+	totalCount = CategoryCount()
+	totalCount.name = "Total"
+	totalCount.count = len(wrappers)
+	categories.insert(0, totalCount)
 	for c in categories:
 		c.percent = (100 * c.count) / totalCount.count
-	context = {
-		'categories': categories
-	}
+	context = __filter_context(request)
+	context['categories'] = categories
 	return render(request, 'type4/stats.html', context)
     
 def changes(request):

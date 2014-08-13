@@ -47,10 +47,6 @@ class Card(models.Model):
 	def flags():
 		return list(n for n in Card._meta.get_all_field_names() if n.startswith('is_'))
 
-class StatusChoice():
-	name = ''
-	id = 0
-
 class Status(models.Model):
     
     # status enum
@@ -94,7 +90,28 @@ class Status(models.Model):
 			+ str
 			+ 'in the stack')
 
+class StatusChoice():
+	name = ''
+	id = 0
+
+class FilterChoice():
+	name = ''
+	attr = ''
+	
+	@staticmethod
+	def get():
+		flag_set = Card.flags()			
+		filter_choices = []
+		for f in flag_set:
+			filter = FilterChoice()
+			filter.name = Card._meta.get_field(f).verbose_name
+			filter.attr = f
+			filter_choices.append(filter)
+		filter_choices = sorted(filter_choices, key=lambda c: c.name)
+		return filter_choices
+
 class CategoryCount():
 	name = ''
+	attr = ''
 	count = 0
 	percent = 0

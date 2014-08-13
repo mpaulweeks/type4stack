@@ -10,14 +10,14 @@
 
 <form action="{% url 'type4:filter' %}" method="get">
 	
-	{% for flag in flag_set %}
+	{% for filter in filter_choices %}
 	<br/>
-	<label>{{flag}}</label>
-	<select name="{{flag}}">
+	<select name="{{filter.attr}}">
 		<option value="None">-</option>
 		<option value="True">True</option>
 		<option value="False">False</option>
 	</select>
+	<label>{{filter.name}}</label>
 	{% endfor %}
 	
 	<br />
