@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.core.urlresolvers import reverse
 from django.shortcuts import render
-from type4.models import Card, Status
+from type4.models import Card, Status, CategoryCount
 from type4.classes import CardWrapper
 from type4.forms import ChangesForm
 
@@ -65,7 +65,32 @@ def filter(request):
 	wrappers = CardWrapper.get_cards_by_id(ids)
 	context = __all_cards_context(wrappers)
 	context['flag_set'] = flag_set
-	return render(request, 'type4/filter.html', context)  
+	return render(request, 'type4/filter.html', context)
+
+def stats(request):
+	flag_set = Card.flags()
+	wrappers = CardWrapper.get_cards_in_stack()
+	flag_count = {}
+	categories = []
+	totalCount = CategoryCount()
+	totalCount.name = "Total"
+	totalCount.count = len(wrappers)
+	categories.append(totalCount)
+	for f in flag_set:
+		count = 0
+		for w in wrappers:
+			if getattr(w.card, f):
+				count += 1
+		c = CategoryCount()
+		c.name = f
+		c.count = count
+		categories.append(c)
+	for c in categories:
+		c.percent = (100 * c.count) / totalCount.count
+	context = {
+		'categories': categories
+	}
+	return render(request, 'type4/stats.html', context)
     
 def changes(request):
 	form = ChangesForm(request.GET)

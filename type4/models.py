@@ -93,3 +93,8 @@ class Status(models.Model):
 			+ ' is ' 
 			+ str
 			+ 'in the stack')
+
+class CategoryCount():
+	name = ''
+	count = 0
+	percent = 0

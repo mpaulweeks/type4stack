@@ -70,6 +70,11 @@ class CardWrapper():
 	@staticmethod
 	def get_card(name):
 		return CardWrapper.get_dict_by_name().get(name.lower())
+
+	@staticmethod
+	def get_cards_in_stack():
+		wrappers = CardWrapper.get_cards()
+		return CardWrapper.filter_cards_by_status(wrappers)[Status.IN_STACK]
 		
 class CardChecker():
 

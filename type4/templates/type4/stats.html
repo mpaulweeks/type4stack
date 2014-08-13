@@ -1,0 +1,38 @@
+{% extends "type4/base.html" %}
+
+{% block subtitle %}
+	 - Stats
+{% endblock %}
+
+{% block intro %}
+	<h1> Stats for Current Stack </h1>
+{% endblock %}
+
+{% block content %}
+	{% for category in category_set %}
+	<div>
+		<span>
+			{{ category }}
+		</span>
+	</div>
+	{% endfor %}
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th> Count </th>
+				<th> Percent </th>
+				<th> Category </th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for category in categories %}
+			<tr>
+				<td> {{ category.count }} </td>
+				<td> {{ category.percent }} </td>
+				<td> {{ category.name }} </td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}
