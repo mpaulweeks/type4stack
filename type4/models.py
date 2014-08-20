@@ -118,3 +118,4 @@ class CategoryCount():
 	attr = ''
 	count = 0
 	percent = 0
+	active = False

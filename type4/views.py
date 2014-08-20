@@ -68,6 +68,7 @@ def __filter_context(request):
 	wrappers = CardWrapper.get_cards_by_id(ids)
 	context = __all_cards_context(wrappers)
 	context['show_art'] = any_filter
+	context['__filter_dict'] = filter_dict
 	return context
 
 def filter(request):
@@ -88,6 +89,7 @@ def stats(request):
 		c.name = f.name
 		c.attr = f.attr
 		c.count = count
+		c.active = (f.attr in request.GET and request.GET[f.attr] == 'True')
 		categories.append(c)
 	categories = sorted(categories, key=lambda c: c.name)
 	totalCount = CategoryCount()
