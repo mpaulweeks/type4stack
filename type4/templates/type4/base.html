@@ -7,6 +7,7 @@
     </title>
     
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <script scr="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	
     {% load staticfiles %}
@@ -39,16 +40,15 @@
 				</button>
 				<a class="navbar-brand" href="{% url 'type4:index' %}">Type 4</a>
 			</div>
-
 			<div class="collapse navbar-collapse" id="navbar">
 				<ul class="nav navbar-nav navbar-left">
+					<li class="active"><a href="./Index.html">Home</a></li>
 					<li><a href="http://blog.type4stack.com">Blog</a></li>
 					<li><a href="{% url 'type4:all_cards' %}">Full List</a></li>
 					<li><a href="{% url 'type4:changes' %}">Changes</a></li>
 					<li><a href="{% url 'type4:stats' %}">Stats</a></li>
 					<li><a href="{% url 'type4:filter' %}">Categories</a></li>
 				</ul>
-
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="/admin/">Admin</a></li>
 				</ul>
