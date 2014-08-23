@@ -6,7 +6,7 @@
 	border: 4px double black;
 }
 .cardimage {
-	width: 200px;
+	width: 222px;
 }
 .columned {
 	-moz-column-width: 200px;
@@ -14,4 +14,14 @@
 }
 .cardlist-title {
 	text-decoration: underline;
+}
+@media only screen and (max-device-width: 568px) {
+	.cardimage {
+		width: 127px;
+	}
+}
+@media only screen and (max-device-width: 320px) {
+	.cardimage {
+		width: 130px;
+	}
 }

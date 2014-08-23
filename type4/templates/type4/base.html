@@ -8,14 +8,14 @@
     
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
+    <script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-transition.js"></script>
+    <script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-collapse.js"></script>
     
     {% load staticfiles %}
-    <link rel="icon" href="{% static 'type4/images/favicon.png' %}" type="image/x-icon"/>
-    
+    <link rel="icon" href="{% static 'type4/images/favicon.png' %}" type="image/x-icon"/>    
     <link rel="stylesheet" href="{% static 'type4/bootstrap.css' %}" />
-    <script src="{% static 'type4/bootstrap.js' %}"></script>
-    
+    <script src="{% static 'type4/bootstrap.js' %}"></script>    
     <link rel="stylesheet" href="{% static 'type4/style.css' %}" />
     <script src="{% static 'type4/cardlist.js' %}"></script>
     
@@ -36,7 +36,7 @@
 		<div class="container">		
 			<a class="navbar-brand" href="{% url 'type4:index' %}">Type 4</a>
 			<!-- Brand and toggle get grouped for better mobile display -->
-			<button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
 				<span class="sr-only">Toggle navigation</span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
