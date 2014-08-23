@@ -6,12 +6,16 @@
     	{% block subtitle %}{% endblock %}
     </title>
     
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
-    <script scr="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	
+    
     {% load staticfiles %}
     <link rel="icon" href="{% static 'type4/images/favicon.png' %}" type="image/x-icon"/>
+    
+    <link rel="stylesheet" href="{% static 'type4/bootstrap.css' %}" />
+    <script src="{% static 'type4/bootstrap.js' %}"></script>
+    
     <link rel="stylesheet" href="{% static 'type4/style.css' %}" />
     <script src="{% static 'type4/cardlist.js' %}"></script>
     
@@ -28,21 +32,18 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-default" role="navigation">
-		<div class="container-fluid" id="navfluid">
+	<nav class="navbar navbar-default navbar-static-top">
+		<div class="container">		
+			<a class="navbar-brand" href="{% url 'type4:index' %}">Type 4</a>
 			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="{% url 'type4:index' %}">Type 4</a>
-			</div>
-			<div class="collapse navbar-collapse" id="navbar">
+			<button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<div class="collapse navbar-collapse navHeaderCollapse">
 				<ul class="nav navbar-nav navbar-left">
-					<li class="active"><a href="./Index.html">Home</a></li>
 					<li><a href="http://blog.type4stack.com">Blog</a></li>
 					<li><a href="{% url 'type4:all_cards' %}">Full List</a></li>
 					<li><a href="{% url 'type4:changes' %}">Changes</a></li>
