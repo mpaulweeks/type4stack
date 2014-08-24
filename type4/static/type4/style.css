@@ -2,26 +2,21 @@
 	display: none;
 }
 .cardlistdisplay {
-	padding: 10px;
-	border: 4px double black;
+	padding: 1em;
+	border: 0.3em double black;
 }
 .cardimage {
-	width: 222px;
+	width: 15.75em;
 }
 .columned {
-	-moz-column-width: 200px;
-	-webkit-column-width: 200px;
+	-moz-column-width: 14em;
+	-webkit-column-width: 14em;
 }
 .cardlist-title {
 	text-decoration: underline;
 }
 @media only screen and (max-device-width: 568px) {
 	.cardimage {
-		width: 127px;
-	}
-}
-@media only screen and (max-device-width: 320px) {
-	.cardimage {
-		width: 130px;
+		width: 8.965em;
 	}
 }
