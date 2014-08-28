@@ -5,6 +5,7 @@ from type4.models import Card, Status, CategoryCount, FilterChoice
 from type4.classes import CardWrapper
 from type4.forms import ChangesForm
 from sets import Set
+from prices import Demo
 
 import logging
 logger = logging.getLogger(__name__)
@@ -17,15 +18,17 @@ def extract_names(cards):
 	return '|'.join(sorted(fix_splits(c.name) for c in cards)) #change to sorted?
 
 def index(request):
-    all_cards = CardWrapper.get_cards()
-    filtered_cards = list(c for c in all_cards if c.is_in_stack())
-    card_names = extract_names(filtered_cards)
-    context = {
-    	'card_names': card_names,
-    	'card_count': len(filtered_cards),
-    	'show_art': 'false',
+	demo_cards = Demo.demo()
+	all_cards = CardWrapper.get_cards()
+	filtered_cards = list(c for c in all_cards if c.is_in_stack())
+	card_names = extract_names(filtered_cards)
+	context = {
+		'card_names': card_names,
+		'card_count': len(filtered_cards),
+		'show_art': 'false',
+		'demo': demo_cards[0]['editions'][0]['price']['median']
 	}
-    return render(request, 'type4/default.html', context)  
+	return render(request, 'type4/default.html', context)  
 
 def __all_cards_context(wrappers):
 	dict = CardWrapper.filter_cards_by_status(wrappers)    
