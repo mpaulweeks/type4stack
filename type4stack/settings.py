@@ -107,13 +107,13 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql_psycopg2",
-#         "NAME": "django_testdb",
-#         "USER": "testadmin",
-#         "PASSWORD": "testing",
-#         "HOST": "localhost",
-#         "PORT": "",
-#     }
-# }
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": "django_testdb",
+        "USER": "testadmin",
+        "PASSWORD": "testing",
+        "HOST": "localhost",
+        "PORT": "",
+    }
+}
