@@ -1,1 +1,1 @@
-web: gunicorn type4stack.wsgi --log-file -
+web: gunicorn type4stack.wsgi -b 0.0.0.0:$PORT
