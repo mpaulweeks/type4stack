@@ -2,7 +2,8 @@ from django.conf.urls import patterns, url
 
 from type4 import views, admin_views
 
-urlpatterns = patterns('',
+urlpatterns = patterns(
+    '',
     url(r'^$', views.index, name='index'),
     url(r'^list/$', views.all_cards, name='all_cards'),
     url(r'^filter/$', views.filter, name='filter'),
