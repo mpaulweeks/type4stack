@@ -3,21 +3,28 @@ function init_cardlist() {
 	function getCardUrl(cardname) {
 		return 'http://magiccards.info/query?q=' + cardname;
 	}
+
+	function getCardImageUrl(card_id) {
+		return 'http://gatherer.wizards.com/Handlers/Image.ashx?type=card&multiverseid=' + card_id;
+	}
 	
-	function getImage(cardname) {
+	function getImage(card_id) {
 		return '<img class="cardimage" '
-			+ 'alt="' + cardname + '" '
-			+ 'src="http://mtgimage.com/card/'
-			+ cardname
-			+ '.jpg"><img/>';
+			+ 'alt="' + card_id + '" '
+			+ 'src="'
+			+ getCardImageUrl(card_id)
+			+ '"><img/>';
 	}
 
-	function getCardDiv(showArt, cardname) {
+	function getCardDiv(showArt, card) {
+		var data = card.split(":");
+		var cardname = data[0];
+		var card_id = data[1];
 		if(showArt) {
 			return '<a href="'
 				+ getCardUrl(cardname)
 				+ '" target="_blank">'
-				+ getImage(cardname)
+				+ getImage(card_id)
 				+ '</a>';
 		} else {		
 			return '<div><a href="'
@@ -32,14 +39,14 @@ function init_cardlist() {
 		var $this = elm;
 		$this.find('.cardlistdisplay').remove();
 		
-		var cardnames = $this.find('.data').html().split('|');
+		var cards = $this.find('.data').html().split('|');
 		var showArt = $this.data('art');
 		$this.data('art', !showArt);
 	
 		var html = '';
-		for (i = 0; i < cardnames.length; i++) {
-			var name = cardnames[i].trim();
-			html += getCardDiv(showArt, name);
+		for (i = 0; i < cards.length; i++) {
+			var card = cards[i].trim();
+			html += getCardDiv(showArt, card);
 		}
 		if (showArt) {
 			html = '<div class="cardlistdisplay">'

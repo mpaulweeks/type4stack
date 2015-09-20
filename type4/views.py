@@ -4,6 +4,7 @@ from django.shortcuts import render
 from type4.models import Card, Status, CategoryCount, FilterChoice
 from type4.classes import CardWrapper
 from type4.forms import ChangesForm
+from type4.multiverse import get_id
 from sets import Set
 
 import logging
@@ -13,8 +14,11 @@ def fix_splits(name):
 	first, sep, second = name.partition(' // ')
 	return first + second
 
-def extract_names(cards):
-	return '|'.join(sorted(fix_splits(c.name) for c in cards)) #change to sorted?
+def extract_names(cards, include_id=True):
+	card_names = fix_splits(c.name) for c in cards)
+	if include_id:
+		card_names = ["%s:%s" % (name, get_id(name)) for name in card_names]
+	return '|'.join(sorted(card_names)
 
 def index(request):
     all_cards = CardWrapper.get_cards()
