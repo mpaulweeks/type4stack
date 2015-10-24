@@ -1,7 +1,7 @@
 type4stack
 ==========
 
-www.type4stack.com
+http://type4stack.herokuapp.com/
 
 Django site to track and view my Type4 MTG stack
 
